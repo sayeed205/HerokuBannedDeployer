@@ -13,28 +13,29 @@
   "env": {
     "OTHER_INSTALLS": {
       "description": "If you need install packages for running your app(Python is pre-installed).[Space in between each package]",
-      "value": "None",
+      "value": "python-pip aria2 qbittorent-nox tzdata p7zip-full p7ziprar xz-utils curl pv jq ffmpeg locals unzip ",
       "required": false
     },
     "REPO_URL": {
       "description": "URL of the REPO that you want to deploy.",
-      "value": ""
+      "value": "https://github.com/anasty17/mirror-leech-telegram-bot.git"
     },
     "PYTHON_FILE": {
       "description": "Name of the python file that you need to run. [use -m if you need to run __main__.py from a folder]",
       "value": ""
     },
-     "OTHER_CMD": {
+    "OTHER_CMD": {
       "description": "If you need to run any bash command other than python specify here",
       "value": "None",
       "required": false
     }
   },
-  "addons": [
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
   ],
-  "buildpacks": [{
-    "url": "heroku/python"
-  }],
   "formation": {
     "worker": {
       "quantity": 1,

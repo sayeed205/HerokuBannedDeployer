@@ -12,13 +12,31 @@ _externals () {
       $OTHER_CMD
    fi
    }
-    
+_move_sa () {
+   find -type d -name "accounts" -exec mv -t ./Github_Repo {} +
+}
+_move_token_pickle () {
+   find -type f -name "tocken.pickle" -exec mv -t ./Github_Repo {} +
+}
+_move_drive_folder () {
+   find -type f -name "drive_folder" -exec mv -t ./Github_Repo {} +
+}
 apt update && apt upgrade -y
 apt install git -y
 _other_installs
 pip3 install -U pip
 git clone $REPO_URL Github_Repo
+_move_sa
+_move_token_pickle
+_move_drive_folder
 cd Github_Repo
 pip3 install -U -r requirements.txt
 _externals
+python update.py
 python $PYTHON_FILE
+
+
+test="/some/path/maybe"
+if [ -d "$test" ]; then
+    echo "$test is a directory"
+fi
